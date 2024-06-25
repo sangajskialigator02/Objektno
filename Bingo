@@ -1,0 +1,56 @@
+import random
+
+class Bingo:
+    def __init__(self):
+        self.generisani_brojevi = []
+        self.korisnicki_brojevi = []
+
+    def generisi_brojeve(self):
+        self.generisani_brojevi = random.sample(range(1, 51), 5)
+        print(f"Generisani Bingo brojevi: {self.generisani_brojevi}")
+
+    def unesi_korisnicke_brojeve(self):
+        print("Unesite 5 jedinstvenih brojeva između 1 i 50:")
+        while len(self.korisnicki_brojevi) < 5:
+            try:
+                broj = int(input(f"Unesite broj {len(self.korisnicki_brojevi) + 1}: "))
+                if broj < 1 or broj > 50:
+                    print("Broj mora biti između 1 i 50.")
+                elif broj u self.korisnicki_brojevi:
+                    print("Broj je već unesen. Molimo unesite drugi broj.")
+                else:
+                    self.korisnicki_brojevi.append(broj)
+            except ValueError:
+                print("Nevažeći unos. Molimo unesite broj.")
+
+    def provjeri_rezultate(self):
+        pogodjeni_brojevi = set(self.generisani_brojevi) & set(self.korisnicki_brojevi)
+        broj_pogodaka = len(pogodjeni_brojevi)
+
+        if broj_pogodaka == 5:
+            return "Jackpot! Svi brojevi su pogođeni!"
+        elif broj_pogodaka == 4:
+            return "Četiri pogodaka! Odlično!"
+        elif broj_pogodaka == 3:
+            return "Tri pogodaka! Dobro!"
+        elif broj_pogodaka == 2:
+            return "Dva pogodaka! Nije loše!"
+        elif broj_pogodaka == 1:
+            return "Jedan pogodak! Više sreće sledeći put!"
+        else:
+            return "Nema pogodaka. Pokušajte ponovo!"
+
+    def prikazi_rezultate(self):
+        rezultat = self.provjeri_rezultate()
+        print(f"Vaši brojevi: {self.korisnicki_brojevi}")
+        print(f"Pogođeni brojevi: {set(self.generisani_brojevi) & set(self.korisnicki_brojevi)}")
+        print(rezultat)
+
+def igraj_bingo():
+    igra = Bingo()
+    igra.generisi_brojeve()
+    igra.unesi_korisnicke_brojeve()
+    igra.prikazi_rezultate()
+
+if __name__ == "__main__":
+    igraj_bingo()
