@@ -9,7 +9,7 @@ class Bingo:
         self.generisani_brojevi = random.sample(range(1, 51), 5)
 
     def unesi_korisnicke_brojeve(self):
-        self.korisnicki_brojevi = []  # Resetujemo korisničke brojeve
+        self.korisnicki_brojevi = []  
         print("Unesite 5 jedinstvenih brojeva između 1 i 50:")
         while len(self.korisnicki_brojevi) < 5:
             try:
